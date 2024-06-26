@@ -4,7 +4,6 @@ import { Node } from './node.js';
 export function Tree(array) {
   const buildTree = (arr = array) => {
     const sortedArray = sortArray(arr);
-    console.log(sortedArray);
     return createTree(sortedArray, 0, sortedArray.length - 1);
   };
 
@@ -19,7 +18,9 @@ export function Tree(array) {
     return node;
   };
 
+  let root = buildTree();
+
   return {
-    buildTree,
+    root,
   };
 }
