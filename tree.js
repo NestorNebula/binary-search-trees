@@ -38,8 +38,48 @@ export function Tree(array) {
     }
   };
 
+  const deleteItem = (value, tree = root) => {
+    if (tree.data === value) {
+      if (tree.left === null && tree.right === null) {
+        return null;
+      }
+      if (tree.left === null) {
+        return tree.right;
+      }
+      if (tree.right === null) {
+        return tree.left;
+      }
+      let node = tree.right;
+      while (node.left !== null) {
+        node = node.left;
+      }
+      const replacementNode = node;
+      deleteItem(replacementNode.data);
+      replacementNode.left = tree.left;
+      replacementNode.right = tree.right;
+      if (tree === root) {
+        root = replacementNode;
+      }
+      return replacementNode;
+    } else if (value < tree.data) {
+      if (tree.left === null) {
+        throw Error("This value isn't in the tree.");
+      }
+      tree.left = deleteItem(value, tree.left);
+      return tree;
+    } else if (value > tree.data) {
+      if (tree.right === null) {
+        throw Error("This value isn't in the tree.");
+      }
+      tree.right = deleteItem(value, tree.right);
+      return tree;
+    }
+    return root;
+  };
+
   return {
     root,
     insert,
+    deleteItem,
   };
 }
