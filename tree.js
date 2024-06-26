@@ -1,7 +1,11 @@
 import { sortArray } from './sortarray.js';
 
 export function Tree(array) {
-  const sortedArray = sortArray(array);
+  const buildTree = (arr = array) => {
+    const sortedArray = sortArray(arr);
+  };
 
-  return { sortedArray };
+  return {
+    buildTree,
+  };
 }
