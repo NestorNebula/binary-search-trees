@@ -20,7 +20,26 @@ export function Tree(array) {
 
   let root = buildTree();
 
+  const insert = (value, tree = root) => {
+    if (value < tree.data) {
+      if (tree.left === null) {
+        tree.left = new Node(value);
+        return;
+      } else {
+        insert(value, tree.left);
+      }
+    } else if (value > tree.data) {
+      if (tree.right === null) {
+        tree.right = new Node(value);
+        return;
+      } else {
+        insert(value, tree.right);
+      }
+    }
+  };
+
   return {
     root,
+    insert,
   };
 }
