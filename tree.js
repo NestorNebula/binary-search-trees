@@ -20,6 +20,8 @@ export function Tree(array) {
 
   let root = buildTree();
 
+  const displayRoot = () => root;
+
   const insert = (value, tree = root) => {
     if (value < tree.data) {
       if (tree.left === null) {
@@ -78,7 +80,7 @@ export function Tree(array) {
   };
 
   return {
-    root,
+    displayRoot,
     insert,
     deleteItem,
   };
