@@ -1,6 +1,7 @@
 {
   "name": "binary-search-trees",
   "version": "1.0.0",
+  "type": "module",
   "description": "See 'Description' in README.md",
   "main": "index.js",
   "scripts": {
