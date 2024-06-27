@@ -2,6 +2,8 @@
 
 ## Description
 
+This project's goal is to build a balanced BST (Binary Search Tree).
+
 This package contains :
 
 ### Tree
@@ -28,3 +30,7 @@ A Node class is called to create each node. The node constructor expect to recei
 A Node value can be accessed by node.data, its left-subtree by node.left and its right-subtree by node.right.
 
 Keep in mind that the rebalance function won't change anything if the tree is balanced and that it isn't called automatically if isBalanced returns false. Same as the insert function doesn't check if the tree is balanced neither rebalance the tree after adding a new element.
+
+#### Package Link
+
+The package can be found at this [link](https://www.npmjs.com/package/binary-search-trees).
