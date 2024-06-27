@@ -79,9 +79,24 @@ export function Tree(array) {
     return root;
   };
 
+  const find = (value, tree = root) => {
+    if (!tree) {
+      return false;
+    }
+    if (tree.data === value) {
+      return tree;
+    }
+    if (value < tree.data) {
+      return find(value, tree.left);
+    } else if (value > tree.data) {
+      return find(value, tree.right);
+    }
+  };
+
   return {
     displayRoot,
     insert,
     deleteItem,
+    find,
   };
 }
