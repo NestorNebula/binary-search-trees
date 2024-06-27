@@ -176,6 +176,31 @@ export function Tree(array) {
     return depthValue;
   };
 
+  const isBalanced = (tree = root) => {
+    if (tree === null) {
+      return 0;
+    }
+    let leftHeight = 0;
+    let rightHeight = 0;
+    if (tree.left) {
+      if (isBalanced(tree.left) === false) {
+        return false;
+      }
+      leftHeight = 1 + height(tree.left);
+    }
+    if (tree.right) {
+      if (isBalanced(tree.right) === false) {
+        return false;
+      }
+      rightHeight = 1 + height(tree.right);
+    }
+    if (leftHeight > rightHeight + 1 || rightHeight > leftHeight + 1) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return {
     displayRoot,
     insert,
@@ -187,5 +212,6 @@ export function Tree(array) {
     postOrder,
     height,
     depth,
+    isBalanced,
   };
 }
