@@ -93,10 +93,34 @@ export function Tree(array) {
     }
   };
 
+  const levelOrder = (callback) => {
+    let tree = root;
+    const queue = [];
+    const array = [];
+    queue.push(tree);
+    while (tree) {
+      if (tree.left) queue.push(tree.left);
+      if (tree.right) queue.push(tree.right);
+      if (callback) {
+        callback(queue[0]);
+        queue.shift(0);
+        tree = queue[0];
+      } else {
+        array.push(tree.data);
+        queue.shift(0);
+        tree = queue[0];
+      }
+    }
+    if (!callback) {
+      return array;
+    }
+  };
+
   return {
     displayRoot,
     insert,
     deleteItem,
     find,
+    levelOrder,
   };
 }
