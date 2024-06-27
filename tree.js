@@ -201,6 +201,12 @@ export function Tree(array) {
     }
   };
 
+  const rebalance = () => {
+    const array = inOrder();
+    const newTree = buildTree(array);
+    root = newTree;
+  };
+
   return {
     displayRoot,
     insert,
@@ -213,5 +219,6 @@ export function Tree(array) {
     height,
     depth,
     isBalanced,
+    rebalance,
   };
 }
