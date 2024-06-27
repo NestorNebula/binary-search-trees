@@ -116,11 +116,24 @@ export function Tree(array) {
     }
   };
 
+  const inOrder = (callback, tree = root, array = []) => {
+    if (tree === null) {
+      return false;
+    }
+    if (tree.left) inOrder(callback, tree.left, array);
+    callback ? callback(tree) : array.push(tree.data);
+    if (tree.right) inOrder(callback, tree.right, array);
+    if (!callback) {
+      return array;
+    }
+  };
+
   return {
     displayRoot,
     insert,
     deleteItem,
     find,
     levelOrder,
+    inOrder,
   };
 }
