@@ -25,7 +25,7 @@ export function Tree(array) {
 
   let root = buildTree();
 
-  const displayRoot = () => root;
+  const getRoot = () => root;
 
   const insert = (value, tree = root) => {
     if (value < tree.data) {
@@ -213,7 +213,7 @@ export function Tree(array) {
   };
 
   return {
-    displayRoot,
+    getRoot,
     insert,
     deleteItem,
     find,
