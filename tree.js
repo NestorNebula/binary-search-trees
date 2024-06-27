@@ -3,7 +3,12 @@ import { Node } from './node.js';
 
 export function Tree(array) {
   const buildTree = (arr = array) => {
-    const sortedArray = sortArray(arr);
+    let sortedArray = [];
+    if (arr === array) {
+      sortedArray = sortArray(arr);
+    } else {
+      sortedArray = arr;
+    }
     return createTree(sortedArray, 0, sortedArray.length - 1);
   };
 
