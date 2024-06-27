@@ -128,6 +128,30 @@ export function Tree(array) {
     }
   };
 
+  const preOrder = (callback, tree = root, array = []) => {
+    if (tree === null) {
+      return false;
+    }
+    callback ? callback(tree) : array.push(tree.data);
+    if (tree.left) preOrder(callback, tree.left, array);
+    if (tree.right) preOrder(callback, tree.right, array);
+    if (!callback) {
+      return array;
+    }
+  };
+
+  const postOrder = (callback, tree = root, array = []) => {
+    if (tree === null) {
+      return false;
+    }
+    if (tree.left) postOrder(callback, tree.left, array);
+    if (tree.right) postOrder(callback, tree.right, array);
+    callback ? callback(tree) : array.push(tree.data);
+    if (!callback) {
+      return array;
+    }
+  };
+
   return {
     displayRoot,
     insert,
@@ -135,5 +159,7 @@ export function Tree(array) {
     find,
     levelOrder,
     inOrder,
+    preOrder,
+    postOrder,
   };
 }
