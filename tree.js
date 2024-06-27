@@ -152,6 +152,20 @@ export function Tree(array) {
     }
   };
 
+  const height = (node) => {
+    if ((node.left === null) & (node.right === null)) {
+      return 0;
+    }
+    let leftHeight = 0;
+    let rightHeight = 0;
+    if (node.left) leftHeight = 1 + height(node.left);
+    if (node.right) rightHeight = 1 + height(node.right);
+    if (leftHeight < rightHeight) {
+      return rightHeight;
+    }
+    return leftHeight;
+  };
+
   return {
     displayRoot,
     insert,
@@ -161,5 +175,6 @@ export function Tree(array) {
     inOrder,
     preOrder,
     postOrder,
+    height,
   };
 }
