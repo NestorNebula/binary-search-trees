@@ -166,6 +166,16 @@ export function Tree(array) {
     return leftHeight;
   };
 
+  const depth = (node) => {
+    let tree = root;
+    let depthValue = 0;
+    while (tree !== node) {
+      node.data < tree.data ? (tree = tree.left) : (tree = tree.right);
+      depthValue += 1;
+    }
+    return depthValue;
+  };
+
   return {
     displayRoot,
     insert,
@@ -176,5 +186,6 @@ export function Tree(array) {
     preOrder,
     postOrder,
     height,
+    depth,
   };
 }
